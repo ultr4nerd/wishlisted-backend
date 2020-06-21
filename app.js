@@ -19,8 +19,12 @@ app.get('/', async (req, res) => {
     await page.setCacheEnabled(false);
     const data = await page.evaluate(scrapper);
 
+    if (!data.url) {
+      data.url = req.query.url;
+    }
+
     await browser.close();
-    res.json({ data });
+    res.json(data);
   } catch (e) {
     console.error(e.message);
     res.json({ message: 'An error has ocurred' });

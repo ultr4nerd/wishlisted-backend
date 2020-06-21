@@ -16,7 +16,7 @@ module.exports = function() {
     url = urlNode.getAttribute('href');
   }
 
-  if (url.includes('amazon.com')) {
+  if (url && url.includes('amazon.com')) {
     image = document.querySelector('.imgTagWrapper img').src;
   } else {
     image = document
